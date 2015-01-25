@@ -1,4 +1,4 @@
-require 'rdiscount'
+require 'kramdown'
 require 'action_view'
 
 # We cannot use Markdown::Rails because it conflicts with RDiscount's Markdown class
@@ -34,7 +34,7 @@ end
 
 MarkdownRails.configure do |config|
   config.render do |markdown_source|
-    RDiscount.new(markdown_source).to_html
+    Kramdown::Document.new(markdown_source).to_html
   end
 end
 
